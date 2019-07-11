@@ -42,9 +42,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
+    // This function is for creating a segue between the 1st and 2nd View Controllers.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "moveSegue", sender: "✌🏻")
+        // Constant that sets emoji to be the selected emoji from the 1st View Controller.
+        let emoji = emojis[indexPath.row]
+        performSegue(withIdentifier: "moveSegue", sender: emoji)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Creates a constant for holding the Definition View Controller.
+        let dVC = segue.destination as! DefinitionViewController
+        dVC.emoji = sender as! String
+    }
+    
 }
 
