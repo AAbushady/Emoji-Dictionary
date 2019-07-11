@@ -8,11 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+// Added UITableViewDataSource and UITableViewDelegate to give Data Source and Delegate the ability to refer to the View Controller.
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    // Outlet to table view.
+    @IBOutlet weak var DictionaryTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // These 2 set how many rows and what contents go into the table view.
+        // Sets Data Source to look to View controller
+        DictionaryTableView.dataSource = self
+        // Sets Delegate to look to View controller
+        DictionaryTableView.delegate = self
     }
 
 
