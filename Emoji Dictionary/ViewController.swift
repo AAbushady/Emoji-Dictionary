@@ -44,6 +44,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // This function is for creating a segue between the 1st and 2nd View Controllers.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Deselects the selection so that none of the columns are highlighted.
+        tableView.deselectRow(at: indexPath, animated: true)
         // Constant that sets emoji to be the selected emoji from the 1st View Controller.
         let emoji = emojis[indexPath.row]
         performSegue(withIdentifier: "moveSegue", sender: emoji)
