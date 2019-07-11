@@ -25,6 +25,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         DictionaryTableView.delegate = self
     }
 
+    // Answers how many rows will be in the tableview.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    // Answers what will be put in each row of the tableview.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Creates a constant called cell and assigns the tableview cell to it.
+        let cell = UITableViewCell()
+        cell.textLabel?.text = "😀"
+        return cell
+    }
 
 }
 
