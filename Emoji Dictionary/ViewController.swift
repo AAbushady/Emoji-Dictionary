@@ -14,6 +14,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Outlet to table view.
     @IBOutlet weak var DictionaryTableView: UITableView!
     
+    // Create an Array of emojis.
+    var emojis = ["😀", "😵", "👺", "👻", "💀", "🤯", "💋"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -27,13 +30,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // Answers how many rows will be in the tableview.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        // Return the amount of items in the array and set that to be the amount of rows in the tableview.
+        return emojis.count
     }
     // Answers what will be put in each row of the tableview.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Creates a constant called cell and assigns the tableview cell to it.
+        print(indexPath.row)
         let cell = UITableViewCell()
-        cell.textLabel?.text = "😀"
+        cell.textLabel?.text = emojis[indexPath.row]
         return cell
     }
 
