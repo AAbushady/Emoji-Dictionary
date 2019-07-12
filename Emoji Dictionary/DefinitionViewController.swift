@@ -17,6 +17,11 @@ class DefinitionViewController: UIViewController {
     @IBOutlet weak var emojiLabel: UILabel!
     // Outlet to the definiition text.
     @IBOutlet weak var definitionLabel: UILabel!
+    // Outlet to the category text.
+    @IBOutlet weak var categoryLabel: UILabel!
+    // Outlet to the birth year text.
+    @IBOutlet weak var birthYearLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,31 +33,45 @@ class DefinitionViewController: UIViewController {
         
         // Set the definition text to correspond to the selected emoji.
         if emoji == "💀" {
-            definitionLabel.text = "Spoopy Skelleton!"
+            definitionLabel.text = "Skull"
+            categoryLabel.text = "Smileys & People"
+            birthYearLabel.text = "Birth Year: 2010"
         }
         
         if emoji == "💋" {
-            definitionLabel.text = "Kiss Kiss"
+            definitionLabel.text = "Kiss Mark"
+            categoryLabel.text = "Smileys & People"
+            birthYearLabel.text = "Birth Year: 2010"
         }
         
         if emoji == "🤯" {
-            definitionLabel.text = "Mind...Blown...."
+            definitionLabel.text = "Exploding Head"
+            categoryLabel.text = "Smileys & People"
+            birthYearLabel.text = "Birth Year: 2017"
         }
         
         if emoji == "👻" {
-            definitionLabel.text = "Spoopy Ghost!"
+            definitionLabel.text = "Ghost"
+            categoryLabel.text = "Smileys & People"
+            birthYearLabel.text = "Birth Year: 2010"
         }
         
         if emoji == "👺" {
-            definitionLabel.text = "Tengu so mad."
+            definitionLabel.text = "Goblin"
+            categoryLabel.text = "Smileys & People"
+            birthYearLabel.text = "Birth Year: 2010"
         }
         
         if emoji == "😀" {
-            definitionLabel.text = "Smiles all around!"
+            definitionLabel.text = "Grinning Face"
+            categoryLabel.text = "Smileys & People"
+            birthYearLabel.text = "Birth Year: 2012"
         }
         
         if emoji == "😵" {
-            definitionLabel.text = "I died..."
+            definitionLabel.text = "Dizzy Face"
+            categoryLabel.text = "Smileys & People"
+            birthYearLabel.text = "Birth Year: 2010"
         }
     }
 }
