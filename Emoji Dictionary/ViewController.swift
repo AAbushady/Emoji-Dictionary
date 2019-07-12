@@ -14,8 +14,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Outlet to table view.
     @IBOutlet weak var DictionaryTableView: UITableView!
     
-    // Create an Array of emojis.
-    var emojis = ["😀", "😵", "👺", "👻", "💀", "🤯", "💋"]
+    // Create an Array of emoji objects.
+    var emojis : [Emoji] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         DictionaryTableView.dataSource = self
         // Sets Delegate to look to View controller
         DictionaryTableView.delegate = self
+        // Calls the function to make each emoji object a part of the emoji array.
+        emojis = makeEmojiArray()
     }
 
     // Answers how many rows will be in the tableview.
@@ -38,7 +40,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Creates a constant called cell and assigns the tableview cell to it.
         print(indexPath.row)
         let cell = UITableViewCell()
-        cell.textLabel?.text = emojis[indexPath.row]
+        let emoji = emojis[indexPath.row] // Constant to hold the emoji based on its index in the array.
+        cell.textLabel?.text = emoji.stringEmoji // Populate the cell with the emoji's picture.
         return cell
     }
     
@@ -54,7 +57,54 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Creates a constant for holding the Definition View Controller.
         let dVC = segue.destination as! DefinitionViewController
-        dVC.emoji = sender as! String
+        dVC.emoji = sender as! Emoji
+    }
+    
+    // This function creates an emoji object for each given emoji and returns an array to incorporate into the emojis array.
+    func makeEmojiArray() -> [Emoji] {
+        let emoji1 = Emoji()
+        emoji1.stringEmoji = "😀"
+        emoji1.birthYear = 2012
+        emoji1.category = "Smileys & People"
+        emoji1.definition = "Grinning Face"
+        
+        let emoji2 = Emoji()
+        emoji2.stringEmoji = "😵"
+        emoji2.birthYear = 2010
+        emoji2.category = "Smileys & People"
+        emoji2.definition = "Dizzy Face"
+        
+        let emoji3 = Emoji()
+        emoji3.stringEmoji = "👺"
+        emoji3.birthYear = 2010
+        emoji3.category = "Smileys & People"
+        emoji3.definition = "Goblin"
+        
+        let emoji4 = Emoji()
+        emoji4.stringEmoji = "👻"
+        emoji4.birthYear = 2010
+        emoji4.category = "Smileys & People"
+        emoji4.definition = "Ghost"
+        
+        let emoji5 = Emoji()
+        emoji5.stringEmoji = "💀"
+        emoji5.birthYear = 2010
+        emoji5.category = "Smileys & People"
+        emoji5.definition = "Skull"
+        
+        let emoji6 = Emoji()
+        emoji6.stringEmoji = "🤯"
+        emoji6.birthYear = 2017
+        emoji6.category = "Smileys & People"
+        emoji6.definition = "Exploding Head"
+        
+        let emoji7 = Emoji()
+        emoji7.stringEmoji = "💋"
+        emoji7.birthYear = 2010
+        emoji7.category = "Smileys & People"
+        emoji7.definition = "Kiss Mark"
+        
+        return [emoji1, emoji2, emoji3, emoji4, emoji5, emoji6, emoji7]
     }
     
 }
