@@ -29,12 +29,10 @@ class DefinitionViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // Set the Emoji to be viewed based on the user selection from the 1st view controller.
+        // Also set the labels to the corresponding information for each emoji.
         emojiLabel.text = emoji.stringEmoji
         birthYearLabel.text = "Origination Date: \(emoji.birthYear)"
         categoryLabel.text = "Category: \(emoji.category)"
         definitionLabel.text = emoji.definition
-        
-        // Set the definition text to correspond to the selected emoji.
-        
     }
 }
