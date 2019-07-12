@@ -11,12 +11,17 @@ import UIKit
 class DefinitionViewController: UIViewController {
     
     // Variable for storing the selected emoji.
-    var emoji = "NO EMOJI"
+    var emoji = Emoji()
 
     // Outlet to the Large Emoji Picture.
     @IBOutlet weak var emojiLabel: UILabel!
     // Outlet to the definiition text.
     @IBOutlet weak var definitionLabel: UILabel!
+    // Outlet to the category text.
+    @IBOutlet weak var categoryLabel: UILabel!
+    // Outlet to the birth year text.
+    @IBOutlet weak var birthYearLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,35 +29,10 @@ class DefinitionViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // Set the Emoji to be viewed based on the user selection from the 1st view controller.
-        emojiLabel.text = emoji
-        
-        // Set the definition text to correspond to the selected emoji.
-        if emoji == "💀" {
-            definitionLabel.text = "Spoopy Skelleton!"
-        }
-        
-        if emoji == "💋" {
-            definitionLabel.text = "Kiss Kiss"
-        }
-        
-        if emoji == "🤯" {
-            definitionLabel.text = "Mind...Blown...."
-        }
-        
-        if emoji == "👻" {
-            definitionLabel.text = "Spoopy Ghost!"
-        }
-        
-        if emoji == "👺" {
-            definitionLabel.text = "Tengu so mad."
-        }
-        
-        if emoji == "😀" {
-            definitionLabel.text = "Smiles all around!"
-        }
-        
-        if emoji == "😵" {
-            definitionLabel.text = "I died..."
-        }
+        // Also set the labels to the corresponding information for each emoji.
+        emojiLabel.text = emoji.stringEmoji
+        birthYearLabel.text = "Origination Date: \(emoji.birthYear)"
+        categoryLabel.text = "Category: \(emoji.category)"
+        definitionLabel.text = emoji.definition
     }
 }

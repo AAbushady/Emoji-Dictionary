@@ -14,8 +14,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Outlet to table view.
     @IBOutlet weak var DictionaryTableView: UITableView!
     
-    // Create an Array of emojis.
-    var emojis = ["😀", "😵", "👺", "👻", "💀", "🤯", "💋"]
+    // Create an Array of emoji objects.
+    var emojis : [Emoji] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         DictionaryTableView.dataSource = self
         // Sets Delegate to look to View controller
         DictionaryTableView.delegate = self
+        // Allows the function that pulls the emojis into an array to run.
+        // This allows me to keep the dictionary located within the Emoji.swift file.
+        let emojiArrayer = Emoji()
+        // Calls the function to make each emoji object a part of the emoji array.
+        emojis = emojiArrayer.makeEmojiArray()
     }
 
     // Answers how many rows will be in the tableview.
@@ -38,7 +43,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Creates a constant called cell and assigns the tableview cell to it.
         print(indexPath.row)
         let cell = UITableViewCell()
-        cell.textLabel?.text = emojis[indexPath.row]
+        let emoji = emojis[indexPath.row] // Constant to hold the emoji based on its index in the array.
+        cell.textLabel?.text = emoji.stringEmoji // Populate the cell with the emoji's picture.
         return cell
     }
     
@@ -54,8 +60,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Creates a constant for holding the Definition View Controller.
         let dVC = segue.destination as! DefinitionViewController
-        dVC.emoji = sender as! String
+        dVC.emoji = sender as! Emoji
     }
-    
 }
-
